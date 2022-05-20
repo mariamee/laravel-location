@@ -30,7 +30,7 @@ class AnnonceController extends Controller
 
     public function myAnnounces()
     {
-        $annonces = Annonce::where('particulier_id', '=', auth()->user()->id);
+        $annonces = Annonce::where('particulier_id', '=', auth()->user()->id)->get();
         return response()->json([
             'annonces' => $annonces,
         ]);
