@@ -87,16 +87,19 @@ class AnnonceController extends Controller
      */
     public function update(Request $request, Annonce $annonce)
     {
-        $annonce = Annonce::findOrFail($id);
+        $annonce = Annonce::findOrFail($request->id);
 
         $annonce->ville = $request->ville;
         $annonce->title = $request->title;
         $annonce->description = $request->description;
         $annonce->date_debut = $request->date_debut;
         $annonce->date_fin = $request->date_fin;
-        $annonce->date_pub = $request->date_pub;
         $annonce->disponibilite = $request->disponibilite;
         $annonce->status = $request->status;
+
+        $annonce->categorie = $request->categorie;
+        $annonce->marque = $request->marque;
+        $annonce->prix = $request->prix;
 
         $annonce->update();
 
