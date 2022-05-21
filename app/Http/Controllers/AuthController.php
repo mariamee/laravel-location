@@ -75,6 +75,25 @@ class AuthController extends Controller
         return Auth::user();
     }
 
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->ville = $request->ville;
+        $user->addresse = $request->addresse;
+        $user->cin = $request->cin;
+        $user->telephone = $request->telephone;
+        // $user->password = Hash::make($request->password);
+        $user->update();
+        return response()->json([
+            'message' => 'user updated successfully',
+            'user' => $user,
+            'role' => $user->getRole()
+        ]);
+    }
+
+
     public function logout()
     {
         $cookie = Cookie::forget('jwt');
