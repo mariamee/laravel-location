@@ -75,6 +75,11 @@ class AuthController extends Controller
         return Auth::user();
     }
 
+    public function annonceUser($id)
+    {
+        return User::findOrFail($id);
+    }
+
     public function update(Request $request)
     {
         $user = Auth::user();
