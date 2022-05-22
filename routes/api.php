@@ -119,6 +119,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/reservation', [ReservationController::class, 'index']);
         // voir les details d'une reservation
         Route::get('/reservation/{id}', [ReservationController::class, 'show']);
+        // voir les details d'une reservation par annonce id
+        Route::get('/reservationByAnnonceId/{id}', [ReservationController::class, 'reservationByAnnonceId']);
         // ajouer une demande de reservation
         Route::post('/reservation/add', [ReservationController::class, 'store']);
         // annuler une demande de reservation

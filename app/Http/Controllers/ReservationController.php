@@ -110,6 +110,15 @@ class ReservationController extends Controller
         ]);
     }
 
+    public function reservationByAnnonceId($id)
+    {
+        $reservation = Reservation::where('annonce_id', '=', $id)->get();
+
+        return response()->json([
+            "reservation" => $reservation
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
