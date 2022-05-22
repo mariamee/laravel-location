@@ -37,7 +37,7 @@ class ReservationController extends Controller
     {
         $reservations = DB::table('reservations')
             ->join('annonces', 'annonces.id', '=', 'reservations.annonce_id')
-            ->select('reservations.*', 'annonces.*')
+            ->select('annonces.*', 'reservations.*')
             ->where('reservations.status', 'like', 'en attente')
             ->where('annonces.particulier_id', '=', auth()->user()->id)
             ->get();
@@ -139,8 +139,11 @@ class ReservationController extends Controller
 
     public function accepter($id)
     {
+
+        // $reservation = Reservation::where('annonce_id', '=', $id)->get();
+
         $reservation = Reservation::findOrFail($id);
-        $annonce = Annonce::findOrFail($id);
+        $annonce = Annonce::findOrFail($reservation->annonce_id);
 
         if ($annonce->particulier_id == auth()->user()->id) {
 
@@ -153,7 +156,7 @@ class ReservationController extends Controller
 
             $client = User::findOrFail($reservation->client_id);
 
-            $client->notify(new ReservationAccepterNotification($client));
+            // $client->notify(new ReservationAccepterNotification($client));
 
             return response()->json([
                 "message" => "Reservation accepter",

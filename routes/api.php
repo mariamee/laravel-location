@@ -106,9 +106,9 @@ Route::middleware('auth:sanctum')->group(function () {
         // tous les reservation accepter par un particulier
         Route::get('/reservation/partenaire/accepter', [ReservationController::class, 'getAcceptedReservationForSpecificPartenaire']);
         // accepter une demande de reservation
-        Route::put('/reservation/accepter/{id}', [ReservationController::class, 'accepter']);
+        Route::get('/reservation/accepter/{id}', [ReservationController::class, 'accepter']);
         // refuser une demande de reservation
-        Route::put('/reservation/refuser/{id}', [ReservationController::class, 'refuser']);
+        Route::get('/reservation/refuser/{id}', [ReservationController::class, 'refuser']);
         // finaliser de reservation
         Route::put('/reservation/finaliser/{id}', [ReservationController::class, 'finaliser']);
     });
