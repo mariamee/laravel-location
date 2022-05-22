@@ -17,7 +17,6 @@ class CreateAvisTable extends Migration
             $table->id();
             $table->integer('note');
             $table->string('commentaire');
-            $table->boolean('status');
             $table->timestamps();
         });
     }

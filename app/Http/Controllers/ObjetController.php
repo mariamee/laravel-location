@@ -14,7 +14,7 @@ class ObjetController extends Controller
      */
     public function myObjects()
     {
-        $objet = Objet::where('partenaire_id', '=', auth()->user()->id);
+        $objet = Objet::where('partenaire_id', '=', auth()->user()->id)->get();
 
         return response()->json([
             'objet' => $objet,

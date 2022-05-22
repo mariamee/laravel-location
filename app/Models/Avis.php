@@ -12,6 +12,5 @@ class Avis extends Model
     protected $fillable = [
         'note',
         'commentaire',
-        'status',
     ];
 }

@@ -15,6 +15,7 @@ class Annonce extends Model
         'marque',
         'prix',
         'ville',
+        'image',
         'title',
         'description',
         'date_debut',

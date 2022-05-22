@@ -98,6 +98,25 @@ class AuthController extends Controller
         ]);
     }
 
+    public function addProfilePicture(Request $request)
+    {
+        $path = "";
+
+        if ($request->hasFile('image')) {
+            $destination_path = '/public/images/profile';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($destination_path, $image_name);
+        }
+        $user = User::findOrFail(Auth::user()->id);
+        $user->photo = $path;
+        $user->update();
+        return response()->json([
+            'message' => 'user updated successfully',
+            'user' => $user,
+            'role' => $user->getRole()
+        ]);
+    }
 
     public function logout()
     {

@@ -30,6 +30,6 @@ class CreatePremiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('premia');
+        Schema::dropIfExists('premiums');
     }
 }

@@ -9,6 +9,8 @@ class Premium extends Model
 {
     use HasFactory;
 
+    public $table = "premiums";
+
     protected $fillable = [
         'annonce_id',
         'date_debut',

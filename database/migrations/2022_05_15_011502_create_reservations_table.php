@@ -21,7 +21,9 @@ class CreateReservationsTable extends Migration
             $table->foreign("client_id")->references("id")->on("users");
             $table->date('date_debut');
             $table->date('date_fin');
-            $table->timestamp('date_reservation')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('date_acceptation')->nullable()
+                ->useCurrent()->useCurrentOnUpdate();
+            $table->string('status');
             $table->timestamps();
         });
     }

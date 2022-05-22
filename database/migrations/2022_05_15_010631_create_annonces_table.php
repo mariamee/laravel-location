@@ -24,6 +24,8 @@ class CreateAnnoncesTable extends Migration
             $table->string('marque', 50);
             $table->float('prix', 10, 0);
 
+            $table->string("image")->nullable();
+
             $table->string("ville");
             $table->string('title', 50);
             $table->string('description');
@@ -31,7 +33,7 @@ class CreateAnnoncesTable extends Migration
             $table->date('date_fin');
             $table->timestamp('date_pub')->useCurrent()->useCurrentOnUpdate()->nullable();
             $table->boolean('disponibilite');
-            $table->boolean('status');
+            $table->string('status', 50);
             $table->timestamps();
         });
     }
