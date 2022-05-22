@@ -14,7 +14,7 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        $annonces = Annonce::all();
+        $annonces = Annonce::where('status', '=', '1')->get();
         return response()->json([
             'annonces' => $annonces,
         ]);
