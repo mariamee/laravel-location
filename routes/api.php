@@ -43,6 +43,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/blacklist/add', [BlacklistController::class, 'addUserToBlackList']);
 
     Route::get('/annonces', [AnnonceController::class, 'index']);
+    Route::get('/annonce/{id}', [AnnonceController::class, 'show']);
 
     Route::middleware(['partenaire'])->group(function () {
 
@@ -54,7 +55,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
         Route::get('/myannonces', [AnnonceController::class, 'myAnnounces']);
-        Route::get('/annonce/{id}', [AnnonceController::class, 'show']);
         Route::post('/annonce/add', [AnnonceController::class, 'store']);
         Route::put('/annonce/update/{id}', [AnnonceController::class, 'update']);
         Route::delete('/annonce/delete/{id}', [AnnonceController::class, 'destroy']);
