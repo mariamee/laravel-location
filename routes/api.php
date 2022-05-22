@@ -85,7 +85,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/premium/delete/{id}', [PremiumController::class, 'destroy']);
 
         // modifier annonce
-        Route::post('/annonce/update/{id}', [AnnonceController::class, 'update']);
+        Route::put('/annonce/update/{id}', [AnnonceController::class, 'update']);
         // supprimer annonce
         Route::delete('/annonce/delete/{id}', [AnnonceController::class, 'destroy']);
 
