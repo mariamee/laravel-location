@@ -60,7 +60,7 @@ class AnnonceController extends Controller
         $annonces = Annonce::where('ville', 'like', $request->ville)
             ->where("categorie", "like", $request->categorie)
             ->where("prix", "<=", $request->prix)
-            ->where('status', 'like', "Not archived")
+            ->where('status', '=', "1")
             ->where('disponibilite', '=', 1)
             ->get();
 
