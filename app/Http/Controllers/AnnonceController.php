@@ -6,6 +6,8 @@ use App\Models\Annonce;
 use App\Models\Premium;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class AnnonceController extends Controller
 {
@@ -16,7 +18,10 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        $annonces = Annonce::where('status', '=', '1')->get();
+        $annonces = Annonce::where('status', '=', '1')
+            ->where('date_debut', '<=', Carbon::now())
+            ->where('date_fin', '>=', Carbon::now())
+            ->get();
         return response()->json([
             'annonces' => $annonces,
         ]);
