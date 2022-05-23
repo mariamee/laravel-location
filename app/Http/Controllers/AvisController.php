@@ -52,7 +52,7 @@ class AvisController extends Controller
             ->join('avis_objets', 'avis.id', '=', 'avis_objets.avis_id')
             ->join('annonces', 'avis_objets.annonce_id', '=', 'annonces.id')
             ->where('annonces.id', '=', $id)
-            ->select('avis.*', 'avis_objets.*', 'annonces.*')
+            ->select('avis_objets.*', 'annonces.*', 'avis.*',)
             ->get();
 
         foreach ($avis as $av) {
