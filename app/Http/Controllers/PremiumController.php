@@ -43,6 +43,10 @@ class PremiumController extends Controller
             'date_debut' => $request->date_debut,
             'date_fin' => $request->date_fin,
         ]);
+
+        return response()->json([
+            'premium' => $premium,
+        ]);
     }
 
     /**

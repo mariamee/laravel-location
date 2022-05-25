@@ -74,7 +74,7 @@ Route::middleware('auth:sanctum')->group(function () {
         // ajouter une annonce avec les information premium
         Route::post('/annonce/addpremium', [AnnonceController::class, 'storeAnnonceWithPremiumOption']);
         // ajouter l'option premium a une annonce qui m'a pas l'option premium
-        Route::get('/annonces/add/premium', [PremiumController::class, 'store']);
+        Route::post('/annonces/add/premium', [PremiumController::class, 'store']);
 
         /* 
         modifier Premium
