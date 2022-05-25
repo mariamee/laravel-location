@@ -39,6 +39,12 @@ Route::post('/annonces/filter', [AnnonceController::class, 'publicFilter']);
 Route::get('/annonces', [AnnonceController::class, 'index']);
 // voir les details d'une annonce
 Route::get('/annonce/{id}', [AnnonceController::class, 'show']);
+// le client peu voir tous les reservation qui a effectuer 
+Route::get('/reservation', [ReservationController::class, 'index']);
+// voir les details d'une reservation
+Route::get('/reservation/{id}', [ReservationController::class, 'show']);
+// voir les details d'une reservation par annonce id
+Route::get('/reservationByAnnonceId/{id}', [ReservationController::class, 'reservationByAnnonceId']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // voir tous les avis 
@@ -115,12 +121,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::middleware(['client'])->group(function () {
 
-        // le client peu voir tous les reservation qui a effectuer 
-        Route::get('/reservation', [ReservationController::class, 'index']);
-        // voir les details d'une reservation
-        Route::get('/reservation/{id}', [ReservationController::class, 'show']);
-        // voir les details d'une reservation par annonce id
-        Route::get('/reservationByAnnonceId/{id}', [ReservationController::class, 'reservationByAnnonceId']);
         // ajouer une demande de reservation
         Route::post('/reservation/add', [ReservationController::class, 'store']);
         // annuler une demande de reservation
